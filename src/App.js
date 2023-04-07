@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { Component, useState, useEffect } from "react";
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
+import ItemList from './item/ItemList'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
@@ -9,8 +10,23 @@ import NavbarComp from "./components/NavbarComp";
 import Footer from "./components/Footer";
 import "./App.css";
 // import "bootstrap-icons/font/bootstrap-icons.css";
+import {
+  MDBNavbar,
+  MDBContainer,
+  MDBIcon,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBNavbarToggler,
+  MDBNavbarBrand,
+  MDBCollapse,
+} from "mdb-react-ui-kit";
 
 export default function App() {
+  const [showNavColor, setShowNavColor] = useState(false);
+  const [showNavColorSecond, setShowNavColorSecond] = useState(false);
+  const [showNavColorThird, setShowNavColorThird] = useState(false);
+
 
   const [isAuth, setIsAuth] = useState(false)
   const [user, setUser] = useState({});
@@ -66,16 +82,63 @@ export default function App() {
     setIsAuth(false)
     setUser(null)
   }
+
   return (
-    <div className="App pageContainer">
-      <NavbarComp />
-      <body>
-        <img
-          className="bg"
-          src="https://cdn.pixabay.com/photo/2021/04/09/15/04/cart-6164635_1280.jpg"
-        ></img>
-      </body>
-      <Footer />
+    <>
+    <Router>
+    <div>
+      <MDBNavbar expand="lg" dark bgColor="dark">
+        <MDBContainer fluid>
+          <MDBNavbarBrand href="/">Tawzee3at</MDBNavbarBrand>
+          <MDBNavbarToggler
+            type="button"
+            data-target="#navbarColor02"
+            aria-controls="navbarColor02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            onClick={() => setShowNavColorSecond(!showNavColorSecond)}
+          >
+            <MDBIcon icon="bars" fas />
+          </MDBNavbarToggler>
+          <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
+            <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
+              <MDBNavbarItem className="active">
+                <MDBNavbarLink aria-current="page" href="/">
+                  Home
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/item">Shop</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/signin">Signin</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/signup">Signup</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/logout"onClick={onLogoutHandler}>Signout</MDBNavbarLink>
+              </MDBNavbarItem>
+            </MDBNavbarNav>
+          </MDBCollapse>
+        </MDBContainer>
+      </MDBNavbar>
     </div>
-  );
-}
+    <div>
+      <Routes>
+        <Route path="/"></Route>
+        <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
+        <Route path="/signin" element={
+          isAuth ?
+          <ItemList />
+          :
+          <Signin login={loginHandler}></Signin>
+        }></Route>
+      </Routes>
+    </div>
+      <Footer />
+      </Router>
+      </>
+  )
+  }
+
