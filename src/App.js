@@ -14,6 +14,12 @@ export default function App() {
   return (
     <div className="App pageContainer">
       <NavbarComp />
+      <body>
+        <img
+          className="bg"
+          src="https://cdn.pixabay.com/photo/2021/04/09/15/04/cart-6164635_1280.jpg"
+        ></img>
+      </body>
       <Footer />
     </div>
   );
