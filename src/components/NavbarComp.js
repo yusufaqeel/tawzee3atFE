@@ -6,14 +6,16 @@ import Axios from "axios";
 import jwt_decode from "jwt-decode";
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-  Container,
-} from "react-bootstrap";
+  MDBNavbar,
+  MDBContainer,
+  MDBIcon,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBNavbarToggler,
+  MDBNavbarBrand,
+  MDBCollapse,
+} from "mdb-react-ui-kit";
 
 export default function NavbarComp() {
 
