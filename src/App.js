@@ -127,6 +127,7 @@ export default function App() {
     <div>
       <Routes>
         <Route path="/"></Route>
+        <Route path="/item" element={<ItemList></ItemList>}></Route>
         <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
         <Route path="/signin" element={
           isAuth ?
