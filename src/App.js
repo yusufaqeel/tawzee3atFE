@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import Home from "./components/home/Home";
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
 import ItemList from './item/ItemList'
@@ -9,6 +10,7 @@ import jwt_decode from "jwt-decode";
 import NavbarComp from "./components/NavbarComp";
 import Footer from "./components/Footer";
 import "./App.css";
+// import HomeCarousel from "./components/home/Gallery";
 // import "bootstrap-icons/font/bootstrap-icons.css";
 import {
   MDBNavbar,
@@ -21,6 +23,7 @@ import {
   MDBNavbarBrand,
   MDBCollapse,
 } from "mdb-react-ui-kit";
+import { MDBLink } from "mdbreact";
 
 export default function App() {
   const [showNavColor, setShowNavColor] = useState(false);
@@ -87,9 +90,9 @@ export default function App() {
     <>
     <Router>
     <div>
-      <MDBNavbar expand="lg" dark bgColor="dark">
+      <MDBNavbar expand="lg" dark bgColor="dark" className="navbar">
         <MDBContainer fluid>
-          <MDBNavbarBrand href="/">Tawzee3at</MDBNavbarBrand>
+          <MDBNavbarBrand href="/"><img src="images/logo.png" alt="Tawzee4at" height={"70px"} margin={"0px"}/></MDBNavbarBrand>
           <MDBNavbarToggler
             type="button"
             data-target="#navbarColor02"
@@ -102,11 +105,11 @@ export default function App() {
           </MDBNavbarToggler>
           <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
             <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
-              <MDBNavbarItem className="active">
+              {/* <MDBNavbarItem className="active">
                 <MDBNavbarLink aria-current="page" href="/">
                   Home
                 </MDBNavbarLink>
-              </MDBNavbarItem>
+              </MDBNavbarItem> */}
               <MDBNavbarItem>
                 <MDBNavbarLink href="/item">Shop</MDBNavbarLink>
               </MDBNavbarItem>
@@ -126,7 +129,7 @@ export default function App() {
     </div>
     <div>
       <Routes>
-        <Route path="/"></Route>
+        <Route path="/" element={<Home/>}></Route>
         <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
         <Route path="/signin" element={
           isAuth ?
@@ -138,7 +141,9 @@ export default function App() {
     </div>
       <Footer />
       </Router>
+      {/* <Home /> */}
       </>
   )
   }
+
 
