@@ -100,7 +100,7 @@ export default function App() {
               </MDBNavbarToggler>
               <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
                 <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
-                  <MDBNavbarItem>
+                  <MDBNavbarItem className="active">
                     <MDBNavbarLink aria-current="page" href="/">
                       Home
                     </MDBNavbarLink>
@@ -127,6 +127,7 @@ export default function App() {
         <div>
           <Routes>
             <Route path="/"></Route>
+            <Route path="/item" element={<ItemList></ItemList>}></Route>
             <Route
               path="/signup"
               element={<Signup register={registerHandler} />}
