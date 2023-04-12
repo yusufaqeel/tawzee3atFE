@@ -129,7 +129,11 @@ export default function App() {
     </div>
     <div>
       <Routes>
+
         <Route path="/" element={<Home/>}></Route>
+
+        <Route path="/item" element={<ItemList></ItemList>}></Route>
+
         <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
         <Route path="/signin" element={
           isAuth ?
