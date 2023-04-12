@@ -1,67 +1,58 @@
-import React, { useState } from 'react'
-import {Container, Form, Button} from "react-bootstrap"
+import React, { useState } from "react";
+import { Container, Form, Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
+import "../";
 
 export default function Signup(props) {
+  const [newUser, setNewUser] = useState({});
 
-    const [newUser, setNewUser] = useState({});
+  const ChangeHandler = (e) => {
+    const user = { ...newUser };
+    user[e.target.name] = e.target.value;
+    setNewUser(user);
+    console.log(user);
+  };
 
-    const ChangeHandler = (e) => {
-        const user = {...newUser}
-        user[e.target.name] = e.target.value
-        setNewUser(user)
-        console.log(user)
-    }
+  const registerHandler = () => {
+    props.register(newUser);
+  };
 
-    const registerHandler = () => {
-        props.register(newUser)
-    }
+  const [t, i18n] = useTranslation();
 
   return (
     <div>
-        <h1>Sign Up</h1>
+      <h1 className="title">{t("Signup")}</h1>
 
-        <Container>
-            <Form.Group>
-                <Form.Label>First Name</Form.Label>
-                <Form.Control name="firstName" onChange={ChangeHandler}/>
-            </Form.Group>
+      <Container className="form">
+        <Form.Group>
+          <Form.Label>{t("Firstname")}</Form.Label>
+          <Form.Control name="firstName" onChange={ChangeHandler} />
+        </Form.Group>
 
-            <h1></h1>
+        <Form.Group>
+          <Form.Label>{t("Lastname")}</Form.Label>
+          <Form.Control name="lastName" onChange={ChangeHandler} />
+        </Form.Group>
 
-            <Form.Group>
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control name="lastName" onChange={ChangeHandler} />
-            </Form.Group>
+        <Form.Group>
+          <Form.Label>{t("Emailaddress")}</Form.Label>
+          <Form.Control name="emailAddress" onChange={ChangeHandler} />
+        </Form.Group>
 
-            <h1></h1>
+        <Form.Group>
+          <Form.Label>{t("Password")}</Form.Label>
+          <Form.Control
+            name="password"
+            type="password"
+            onChange={ChangeHandler}
+          />
+        </Form.Group>
 
-            <Form.Group>
-                <Form.Label>Email Address</Form.Label>
-                <Form.Control name="emailAddress" onChange={ChangeHandler} />
-            </Form.Group>
+        <Button variant="grey" onClick={registerHandler}>
+          {t("Register")}
+        </Button>
+      </Container>
 
-            <h1></h1>
-
-            <Form.Group>
-                <Form.Label>Password</Form.Label>
-                <Form.Control name="password" type="password" onChange={ChangeHandler} />
-            </Form.Group>
-
-            <h1></h1>
-
-            <Form.Group>
-                <Form.Label>Phone Number</Form.Label>
-                <Form.Control name="phoneNumber" onChange={ChangeHandler} />
-            </Form.Group>
-
-            <h1></h1>
-
-            <Button variant="primary" onClick={registerHandler}>
-                Register
-            </Button>
-
-        </Container>
-        
     </div>
-  )
+  );
 }
