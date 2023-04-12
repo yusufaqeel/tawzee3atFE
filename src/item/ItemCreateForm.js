@@ -1,8 +1,13 @@
-import React, {useState} from 'react'
+
+import React, { useState } from "react";
+import { Container, Form, Button } from "react-bootstrap";
+import "../App.css";
+import { useTranslation } from "react-i18next";
+import "../i18n";
 import UploadImage from '../upload/UploadImage'
 
 export default function ItemCreateForm(props) {
-
+    const [t, i18n] = useTranslation();
     const [newItem, setNewItem] = useState({})
     const [file, setFile] = useState([])
     const [fileSelected, setFileSelected] = useState("")
@@ -49,6 +54,7 @@ export default function ItemCreateForm(props) {
     }
 
   return (
+
     <div className={props.button === 1 ? "hidden" : ""}>
         <h1>Create Item</h1>
         <form onSubmit={handleSubmit}>
@@ -98,6 +104,7 @@ export default function ItemCreateForm(props) {
                 <input type="submit" value="Add Item"></input>
             </div>
         </form>
+
     </div>
   );
 }

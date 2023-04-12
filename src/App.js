@@ -23,9 +23,12 @@ import {
   MDBNavbarBrand,
   MDBCollapse,
 } from "mdb-react-ui-kit";
+
 import { MDBLink } from "mdbreact";
 import { useTranslation } from "react-i18next";
 import "./i18n";
+import Home from "./components/Home";
+
 
 export default function App() {
   const [showNavColor, setShowNavColor] = useState(false);
@@ -90,66 +93,87 @@ export default function App() {
 
   return (
     <>
-    <Router>
-    <div>
-      <MDBNavbar expand="lg" dark bgColor="dark" className="navbar">
-        <MDBContainer fluid>
-          <MDBNavbarBrand href="/"><img src="images/logo.png" alt="Tawzee4at" height={"70px"} margin={"0px"}/></MDBNavbarBrand>
-          <MDBNavbarToggler
-            type="button"
-            data-target="#navbarColor02"
-            aria-controls="navbarColor02"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            onClick={() => setShowNavColorSecond(!showNavColorSecond)}
-          >
-            <MDBIcon icon="bars" fas />
-          </MDBNavbarToggler>
-          <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
-            <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
-              {/* <MDBNavbarItem className="active">
-                <MDBNavbarLink aria-current="page" href="/">
-                  Home
-                </MDBNavbarLink>
-              </MDBNavbarItem> */}
-              <MDBNavbarItem>
-                <MDBNavbarLink href="/item">Shop</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href="/signin">Signin</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href="/signup">Signup</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href="/logout"onClick={onLogoutHandler}>Signout</MDBNavbarLink>
-              </MDBNavbarItem>
-            </MDBNavbarNav>
-          </MDBCollapse>
-        </MDBContainer>
-      </MDBNavbar>
-    </div>
-    <div>
-      <Routes>
 
-        <Route path="/" element={<Home/>}></Route>
+      <Router>
+        <div>
+          <MDBNavbar expand="lg" dark bgColor="dark">
+            <MDBContainer fluid>
+              <MDBNavbarBrand href="/">{t("Title")}</MDBNavbarBrand>
+              <MDBNavbarToggler
+                type="button"
+                data-target="#navbarColor02"
+                aria-controls="navbarColor02"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                onClick={() => setShowNavColorSecond(!showNavColorSecond)}
+              >
+                <MDBIcon icon="bars" fas />
+              </MDBNavbarToggler>
+              <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
+                <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
+                  <MDBNavbarItem className="">
+                    <MDBNavbarLink aria-current="page" href="/">
+                      {t("Home")}
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink href="/item">{t("Shop")}</MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink href="/signin">{t("Signin")}</MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink href="/signup">{t("Signup")}</MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink href="/logout" onClick={onLogoutHandler}>
+                      {t("Signout")}
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    {i18n.language == "en" && (
+                      <MDBNavbarLink
+                        onClick={() => {
+                          i18n.changeLanguage("ar");
+                        }}
+                      >
+                        عربي
+                      </MDBNavbarLink>
+                    )}
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    {i18n.language == "ar" && (
+                      <MDBNavbarLink
+                        onClick={() => {
+                          i18n.changeLanguage("en");
+                        }}
+                      >
+                        en
+                      </MDBNavbarLink>
+                    )}
+                  </MDBNavbarItem>
+                </MDBNavbarNav>
+              </MDBCollapse>
+            </MDBContainer>
+          </MDBNavbar>
 
-        <Route path="/item" element={<ItemList></ItemList>}></Route>
-
-        <Route path="/signup" element={<Signup register={registerHandler} />}></Route>
-        <Route path="/signin" element={
-          isAuth ?
-          <ItemList />
-          :
-          <Signin login={loginHandler}></Signin>
-        }></Route>
-      </Routes>
-    </div>
-      <Footer />
+          <Routes>
+            <Route path="/" element={<Home></Home>}></Route>
+            <Route path="/item" element={<ItemList></ItemList>}></Route>
+            <Route
+              path="/signup"
+              element={<Signup register={registerHandler} />}
+            ></Route>
+            <Route
+              path="/signin"
+              element={
+                isAuth ? <ItemList /> : <Signin login={loginHandler}></Signin>
+              }
+            ></Route>
+          </Routes>
+        </div>
+        <Footer />
       </Router>
-      {/* <Home /> */}
-      </>
-  )
-  }
-
-
+    </>
+  );
+}

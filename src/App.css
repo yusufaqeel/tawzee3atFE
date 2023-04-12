@@ -41,6 +41,39 @@
       height: 50%;
   }
 }
+
+
+.drop {
+  margin-left: ;
+}
+
+.select {
+  width: 933px;
+  margin-left: 35px;
+}
+
+.bigdiv {
+  width: 1000px;
+  /* border: 2px solid black; */
+  margin-left: 59px;
+  margin-top: 200px;
+}
+
+.h11 {
+  text-align: center;
+  position: absolute;
+  margin-left: 400px;
+  margin-top: -150px;
+}
+
+.drop label {
+  margin-left: 36px;
+}
+
+.drop2 {
+  margin-left: 40px;
+
 .hidden {
   display: none;
+
 }

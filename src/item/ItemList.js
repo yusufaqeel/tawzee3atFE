@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect} from 'react'
 import Axios from 'axios'
 import Item from './Item'
@@ -7,31 +8,31 @@ import ItemEditForm from './ItemEditForm'
 import UploadImage from '../upload/UploadImage'
 
 export default function ItemList() {
-
-  const [items, setItems] = useState([])
-  const [isEdit, setIsEdit] = useState(false)
-  const [currentItem, setCurrentItem] = useState("")
+  const [items, setItems] = useState([]);
+  const [isEdit, setIsEdit] = useState(false);
+  const [currentItem, setCurrentItem] = useState("");
 
   useEffect(() => {
-    loadItemList()
-  }, [])
+    loadItemList();
+  }, []);
 
   const loadItemList = () => {
     console.log("loaded")
     Axios.get("item/index")
-    .then((res) => {
-      console.log(res);
-      // State to store the data
-      setItems(res.data.items)
-    })
-    .catch((err) => {
-      console.log("error retriving Items");
-      console.log(err);
-    })
-  }
+      .then((res) => {
+        console.log(res);
+        // State to store the data
+        setItems(res.data.items);
+      })
+      .catch((err) => {
+        console.log("error retriving Items");
+        console.log(err);
+      });
+  };
 
   const addItem = (item, file) => {
     Axios.post("item/add", item)
+
     .then (res => {
         console.log("Item was added successfully");
         console.log(res.data);
@@ -71,62 +72,59 @@ export default function ItemList() {
   // }
 
   const editView = (id) => {
-    Axios.get(`item/edit?id=${id}`,
-    {
+    Axios.get(`item/edit?id=${id}`, {
       headers: {
-        "Authorization": "Bearer" + localStorage.getItem("token")
-      }
+        Authorization: "Bearer" + localStorage.getItem("token"),
+      },
     })
-    .then (res => {
-      console.log(res.data.item);
-      let item = res.data.item
-      console.log('loaded item info');
-      setIsEdit(true)
-      setCurrentItem(item)
-    })
-    .catch(err => {
-      console.log('Error Loading Infos');
-
-    })
-  }
+      .then((res) => {
+        console.log(res.data.item);
+        let item = res.data.item;
+        console.log("loaded item info");
+        setIsEdit(true);
+        setCurrentItem(item);
+      })
+      .catch((err) => {
+        console.log("Error Loading Infos");
+      });
+  };
 
   const editItem = (item) => {
-    Axios.put("item/update", item,
-    {
+    Axios.put("item/update", item, {
       headers: {
-        "Authorization": "Bearer" + localStorage.getItem("token")
-      }
+        Authorization: "Bearer" + localStorage.getItem("token"),
+      },
     })
-    .then(res => {
-      console.log("Item was updated");
-      console.log(res);
-      loadItemList()
-    })
-    .catch(err => {
-      console.log("Editing Failed");
-      console.log(err);
-    })
-  }
+      .then((res) => {
+        console.log("Item was updated");
+        console.log(res);
+        loadItemList();
+      })
+      .catch((err) => {
+        console.log("Editing Failed");
+        console.log(err);
+      });
+  };
 
   const deleteItem = (id) => {
-    Axios.delete(`item/delete?id=${id}`,
-    {
+    Axios.delete(`item/delete?id=${id}`, {
       headers: {
-        "Authorization": "Bearer" + localStorage.getItem("token")
-      }
+        Authorization: "Bearer" + localStorage.getItem("token"),
+      },
     })
-    .then(res => {
-      console.log("item was Deleted");
-      console.log(res);
-      loadItemList()
-    })
-    .catch(err => {
-      console.log("Deleting Failed");
-      console.log(err);
-    })
-  }
+      .then((res) => {
+        console.log("item was Deleted");
+        console.log(res);
+        loadItemList();
+      })
+      .catch((err) => {
+        console.log("Deleting Failed");
+        console.log(err);
+      });
+  };
 
   const allItems = items.map((item, index) => (
+
     <div key={index}>
       <Item {...item} editView={editView} deleteItem={deleteItem}/>
     </div>
@@ -144,6 +142,7 @@ export default function ItemList() {
       <div>
         {allItems}
       </div>
+
     </div>
-  )
+  );
 }
