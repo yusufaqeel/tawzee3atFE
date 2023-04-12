@@ -1,60 +1,60 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
+import { Container, Form, Button } from "react-bootstrap";
+import "../App.css";
 
 export default function ItemCreateForm(props) {
-
-    const [newItem, setNewItem] = useState({})
-
+  const [newItem, setNewItem] = useState({});
 
   const handleChange = (event) => {
-    const attributeToChange = event.target.name
-    const newValue = event.target.value
+    const attributeToChange = event.target.name;
+    const newValue = event.target.value;
 
-    const item = {...newItem}
-    item[attributeToChange] = newValue
-    console.log(item)
-    setNewItem(item)
-  }
+    const item = { ...newItem };
+    item[attributeToChange] = newValue;
+    console.log(item);
+    setNewItem(item);
+  };
 
   const handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     props.addItem(newItem);
-  }
+  };
 
   return (
     <div>
-        <h1>Create Item</h1>
+      <h1>Create Item</h1>
+      <Container className="form">
+        <Form.Group>
+          <Form.Label>Name</Form.Label>
+          <Form.Control name="title" onChange={handleChange} />
+        </Form.Group>
 
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Name</label>
-                <input type="text" name="title" onChange={handleChange}></input>
-            </div>
+        <Form.Group>
+          <Form.Label>Description</Form.Label>
+          <Form.Control name="des" onChange={handleChange} />
+        </Form.Group>
 
-            <div>
-                <label>Description</label>
-                <input type="text" name="des" onChange={handleChange}></input>
-            </div>
+        <Form.Group>
+          <Form.Label>Price</Form.Label>
+          <Form.Control name="price" onChange={handleChange} />
+        </Form.Group>
+      </Container>
 
-            <div>
-                <label>Price</label>
-                <input type="text" name="price" onChange={handleChange}></input>
-            </div>
+      <div className="drop">
+        <label>Item Category</label>
+        <br></br>
+        <select class="selectpicker" onChange={handleChange}>
+          <option>GurGoan</option>
+          <option>Eid</option>
+          <option>New Born</option>
+          <option>Wedding</option>
+          <option>Others</option>
+        </select>
+      </div>
 
-            <div>
-                <label>Item Category</label>
-                <select name="category" onChange={handleChange}>
-                    <option>GurGoan</option>
-                    <option>Eid</option>
-                    <option>New Born</option>
-                    <option>Wedding</option>
-                    <option>Others</option>
-                </select>
-            </div>
-
-            <div>
-                <input type="submit" value="Add Item"></input>
-            </div>
-        </form>
+      <div className="drop">
+        <input type="submit" value="Add Item"></input>
+      </div>
     </div>
-  )
+  );
 }

@@ -21,6 +21,8 @@ import {
   MDBNavbarBrand,
   MDBCollapse,
 } from "mdb-react-ui-kit";
+import { useTranslation } from "react-i18next";
+import "./i18n";
 
 export default function App() {
   const [showNavColor, setShowNavColor] = useState(false);
@@ -81,13 +83,15 @@ export default function App() {
     setUser(null);
   };
 
+  const [t, i18n] = useTranslation();
+
   return (
     <>
       <Router>
         <div>
           <MDBNavbar expand="lg" dark bgColor="dark">
             <MDBContainer fluid>
-              <MDBNavbarBrand href="/">Tawzee3at</MDBNavbarBrand>
+              <MDBNavbarBrand href="/">{t("Title")}</MDBNavbarBrand>
               <MDBNavbarToggler
                 type="button"
                 data-target="#navbarColor02"
@@ -102,29 +106,50 @@ export default function App() {
                 <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
                   <MDBNavbarItem className="active">
                     <MDBNavbarLink aria-current="page" href="/">
-                      Home
+                      {t("Home")}
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink href="/item">Shop</MDBNavbarLink>
+                    <MDBNavbarLink href="/item">{t("Shop")}</MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink href="/signin">Signin</MDBNavbarLink>
+                    <MDBNavbarLink href="/signin">{t("Signin")}</MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink href="/signup">Signup</MDBNavbarLink>
+                    <MDBNavbarLink href="/signup">{t("Signup")}</MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
                     <MDBNavbarLink href="/logout" onClick={onLogoutHandler}>
-                      Signout
+                      {t("Signout")}
                     </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    {i18n.language == "en" && (
+                      <MDBNavbarLink
+                        onClick={() => {
+                          i18n.changeLanguage("ar");
+                        }}
+                      >
+                        عربي
+                      </MDBNavbarLink>
+                    )}
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    {i18n.language == "ar" && (
+                      <MDBNavbarLink
+                        onClick={() => {
+                          i18n.changeLanguage("en");
+                        }}
+                      >
+                        en
+                      </MDBNavbarLink>
+                    )}
                   </MDBNavbarItem>
                 </MDBNavbarNav>
               </MDBCollapse>
             </MDBContainer>
           </MDBNavbar>
-        </div>
-        <div>
+
           <Routes>
             <Route path="/"></Route>
             <Route path="/item" element={<ItemList></ItemList>}></Route>
