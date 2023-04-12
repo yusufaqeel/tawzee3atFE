@@ -8,8 +8,11 @@ import {
   MDBRow,
   MDBBtn,
 } from "mdb-react-ui-kit";
+import { useTranslation } from "react-i18next";
+import "../";
 
 export default function App() {
+  const [t, i18n] = useTranslation();
   return (
     <div className="footer">
       <MDBFooter className="text-center" color="white" bgColor="dark">
@@ -75,7 +78,7 @@ export default function App() {
               color="light"
               floating
               className="m-1"
-              href="#!"
+              href="https://github.com/yusufaqeel"
               role="button"
             >
               <MDBIcon fab icon="github" />
@@ -87,7 +90,7 @@ export default function App() {
               <MDBRow className="d-flex justify-content-center">
                 <MDBCol size="auto">
                   <p className="pt-2">
-                    <strong>Sign up for our newsletter</strong>
+                    <strong>{t("Footer-text")}</strong>
                   </p>
                 </MDBCol>
 
@@ -95,138 +98,29 @@ export default function App() {
                   <MDBInput
                     contrast
                     type="email"
-                    label="Email address"
+                    label={t("Emailaddress")}
                     className="mb-4"
                   />
                 </MDBCol>
 
                 <MDBCol size="auto">
                   <MDBBtn outline color="light" type="submit" className="mb-4">
-                    Subscribe
+                    {t("sub")}
                   </MDBBtn>
                 </MDBCol>
               </MDBRow>
             </form>
           </section>
 
-          <section className="mb-4">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-              distinctio earum repellat quaerat voluptatibus placeat nam,
-              commodi optio pariatur est quia magnam eum harum corrupti dicta,
-              aliquam sequi voluptate quas.
-            </p>
-          </section>
-
           <section className="">
             <MDBRow>
-              <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-                <h5 className="text-uppercase">Links</h5>
+              <MDBCol></MDBCol>
 
-                <ul className="list-unstyled mb-0">
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 1
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 2
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 3
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 4
-                    </a>
-                  </li>
-                </ul>
-              </MDBCol>
+              <MDBCol></MDBCol>
 
-              <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-                <h5 className="text-uppercase">Links</h5>
+              <MDBCol></MDBCol>
 
-                <ul className="list-unstyled mb-0">
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 1
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 2
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 3
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 4
-                    </a>
-                  </li>
-                </ul>
-              </MDBCol>
-
-              <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-                <h5 className="text-uppercase">Links</h5>
-
-                <ul className="list-unstyled mb-0">
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 1
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 2
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 3
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 4
-                    </a>
-                  </li>
-                </ul>
-              </MDBCol>
-
-              <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-                <h5 className="text-uppercase">Links</h5>
-
-                <ul className="list-unstyled mb-0">
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 1
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 2
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 3
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 4
-                    </a>
-                  </li>
-                </ul>
-              </MDBCol>
+              <MDBCol></MDBCol>
             </MDBRow>
           </section>
         </MDBContainer>
@@ -235,9 +129,9 @@ export default function App() {
           className="text-center p-3"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
         >
-          © 2023 Copyright:
+          © 2023 Copyright:&nbsp;
           <a className="text-white" href="https://mdbootstrap.com/">
-            Tawzee3at
+            {t("Tawzee3at")}
           </a>
         </div>
       </MDBFooter>
