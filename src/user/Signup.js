@@ -48,10 +48,12 @@ export default function Signup(props) {
           />
         </Form.Group>
 
+
         <Button variant="grey" onClick={registerHandler}>
           {t("Register")}
         </Button>
       </Container>
+
     </div>
   );
 }

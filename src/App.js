@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import Home from "./components/home/Home";
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
 import ItemList from "./item/ItemList";
@@ -9,6 +10,7 @@ import jwt_decode from "jwt-decode";
 import NavbarComp from "./components/NavbarComp";
 import Footer from "./components/Footer";
 import "./App.css";
+// import HomeCarousel from "./components/home/Gallery";
 // import "bootstrap-icons/font/bootstrap-icons.css";
 import {
   MDBNavbar,
@@ -21,9 +23,13 @@ import {
   MDBNavbarBrand,
   MDBCollapse,
 } from "mdb-react-ui-kit";
+
+import { MDBLink } from "mdbreact";
 import { useTranslation } from "react-i18next";
 import "./i18n";
+
 import Home from "./components/Home";
+
 
 export default function App() {
   const [showNavColor, setShowNavColor] = useState(false);
@@ -88,6 +94,7 @@ export default function App() {
 
   return (
     <>
+
       <Router>
         <div>
           <MDBNavbar expand="lg" dark bgColor="dark">

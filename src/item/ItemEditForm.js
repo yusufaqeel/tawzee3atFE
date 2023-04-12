@@ -16,7 +16,7 @@ export default function ItemEditForm(props) {
   }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     props.editItem(item);
   }
 
@@ -37,12 +37,12 @@ export default function ItemEditForm(props) {
 
             <div>
                 <label>Price</label>
-                <input type="text" name="price" value={item.orice} onChange={handleChange}></input>
+                <input type="number" name="price" value={item.price} onChange={handleChange}></input>
             </div>
 
             <div>
                 <label>Item Category</label>
-                <select name="category">
+                <select name="category" value={item.category}>
                     <option>-----</option>
                     <option>GurGoan</option>
                     <option>Eid</option>

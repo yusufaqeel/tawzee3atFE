@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
-import Item from "./Item";
-import ItemCreateFrom from "./ItemCreateForm";
-import ItemEditForm from "./ItemEditForm";
+
+import React, {useState, useEffect} from 'react'
+import Axios from 'axios'
+import Item from './Item'
+import AddButton from './AddButton'
+import ItemCreateFrom from './ItemCreateForm'
+import ItemEditForm from './ItemEditForm'
+import UploadImage from '../upload/UploadImage'
 
 export default function ItemList() {
   const [items, setItems] = useState([]);
@@ -26,19 +29,45 @@ export default function ItemList() {
       });
   };
 
-  const addItem = (item) => {
+  const addItem = (item, file) => {
     Axios.post("item/add", item)
-      .then((res) => {
-        console.log((res) => {
-          console.log("Item was added successfully");
-          loadItemList();
-        });
-      })
-      .catch((err) => {
-        console.log("error adding item");
-        console.log(err);
+
+    .then (res => {
+        console.log("Item was added successfully");
+        console.log(res.data);
+        console.log(res.data.items._id);
+        // Receive Item id
+          addImage(file, res.data.items._id)
+        // loadItemList()
+    })
+    .catch(err => {
+      console.log("error adding item");
+      console.log(err);
+    })
+  }
+
+  const addImage = (file, id) => {
+    const data = new FormData()
+
+    for (let i = 0; i < file.length; i++) {
+      data.append("my_file", file[i])
+    }
+
+    Axios.post(`image/upload?id=${id}`, data)
+    .then (res => {
+      console.log(res => {
+        console.log("Item was added successfully");
+        loadItemList()
+
       });
   };
+
+  // const uploadImage = (item) => {
+  //   Axios.post("/image/upload", item)
+  //   then (res => {
+
+  //   })
+  // }
 
   const editView = (id) => {
     Axios.get(`item/edit?id=${id}`, {
@@ -93,25 +122,25 @@ export default function ItemList() {
   };
 
   const allItems = items.map((item, index) => (
-    <dev key={index}>
-      <Item {...item} editItem={editItem} deleteItem={deleteItem} />
-    </dev>
-  ));
+
+    <div key={index}>
+      <Item {...item} editView={editView} deleteItem={deleteItem}/>
+    </div>
+  ))
 
   return (
     <div>
-      <h1></h1>
+      <AddButton/>
+      
+      {(!isEdit) ?
+      <ItemCreateFrom addItem={addItem} addImage={addImage}/>
+      :
+      <ItemEditForm key={currentItem._id} item={currentItem} editItem={editItem}/>
+      }
+      <div>
+        {allItems}
+      </div>
 
-      <div>{allItems}</div>
-      {!isEdit ? (
-        <ItemCreateFrom addItem={addItem} />
-      ) : (
-        <ItemEditForm
-          key={currentItem._id}
-          item={currentItem}
-          editItem={editItem}
-        />
-      )}
     </div>
   );
 }

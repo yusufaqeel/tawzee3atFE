@@ -5,6 +5,7 @@
 }
 
 .footer {
+  position: relative;
   bottom: 0;
   height: 0.25rem;
   width: 100%;
@@ -25,22 +26,22 @@
   left: 0;
 }
 
-@media screen and (max-width: 1024px) {
-  /* Specific to this particular image */
-  img.bg {
-    left: 50%;
-    margin-left: -512px; /* 50% */
+.background-video {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .background-video {
+      width: auto;
+      height: 50%;
   }
 }
 
-.title {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.form {
-  margin-top: 100px;
-}
 
 .drop {
   margin-left: ;
@@ -71,4 +72,8 @@
 
 .drop2 {
   margin-left: 40px;
+
+.hidden {
+  display: none;
+
 }
