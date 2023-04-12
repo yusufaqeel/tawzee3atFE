@@ -26,11 +26,19 @@
   left: 0;
 }
 
-@media screen and (max-width: 1024px) {
-  /* Specific to this particular image */
-  img.bg {
-    left: 50%;
-    margin-left: -512px; /* 50% */
+.background-video {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .background-video {
+      width: auto;
+      height: 50%;
   }
 }
 .hidden {
