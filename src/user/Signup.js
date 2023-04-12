@@ -26,20 +26,35 @@ export default function Signup(props) {
                 <Form.Control name="firstName" onChange={ChangeHandler}/>
             </Form.Group>
 
+            <h1></h1>
+
             <Form.Group>
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control name="lastName" onChange={ChangeHandler} />
             </Form.Group>
+
+            <h1></h1>
 
             <Form.Group>
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control name="emailAddress" onChange={ChangeHandler} />
             </Form.Group>
 
+            <h1></h1>
+
             <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <Form.Control name="password" type="password" onChange={ChangeHandler} />
             </Form.Group>
+
+            <h1></h1>
+
+            <Form.Group>
+                <Form.Label>Phone Number</Form.Label>
+                <Form.Control name="phoneNumber" onChange={ChangeHandler} />
+            </Form.Group>
+
+            <h1></h1>
 
             <Button variant="primary" onClick={registerHandler}>
                 Register
