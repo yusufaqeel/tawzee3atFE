@@ -17,6 +17,7 @@ export default function ItemList() {
   }, [])
 
   const loadItemList = () => {
+    console.log("loaded")
     Axios.get("item/index")
     .then((res) => {
       console.log(res);
@@ -37,7 +38,6 @@ export default function ItemList() {
         console.log(res.data.items._id);
         // Receive Item id
           addImage(file, res.data.items._id)
-        // loadItemList()
     })
     .catch(err => {
       console.log("error adding item");
@@ -54,10 +54,8 @@ export default function ItemList() {
 
     Axios.post(`image/upload?id=${id}`, data)
     .then (res => {
-      console.log(res => {
         console.log("Item was added successfully");
         loadItemList()
-      });
     })
     .catch(err => {
       console.log("error adding item");

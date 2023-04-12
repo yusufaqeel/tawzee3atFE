@@ -43,7 +43,7 @@ export default function ItemCreateForm(props) {
 //   }
 
   const handleSubmit = async (e) => {
-    //   e.preventDefault();
+      e.preventDefault();
       props.addItem(newItem, file);
     //   setLoading(true);
     }
