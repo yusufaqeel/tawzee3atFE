@@ -3,7 +3,7 @@ import React from 'react'
 export default function Item(props) {
   return (
     <>
-        <img src={props.imageURL} alt='Item image'></img>
+        <img src={props.imageUrl} alt='Item image'></img>
         <p>name: <span>{props.title}</span></p>
         <p>description: <span>{props.des}</span></p>
         <p>category: <span>{props.category}</span></p>

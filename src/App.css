@@ -5,7 +5,7 @@
 }
 
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   height: 0.25rem;
   width: 100%;
@@ -32,4 +32,7 @@
     left: 50%;
     margin-left: -512px; /* 50% */
   }
+}
+.hidden {
+  display: none;
 }
