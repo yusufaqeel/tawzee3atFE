@@ -26,10 +26,20 @@
   left: 0;
 }
 
-.gallery {
+.background-video {
   position: relative;
-  /* height: auto; */
-  /* width: 50%; */
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .background-video {
+      width: auto;
+      height: 50%;
+  }
 }
 
 
@@ -62,7 +72,6 @@
 
 .drop2 {
   margin-left: 40px;
-}
 
 .hidden {
   display: none;
