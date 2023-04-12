@@ -10,14 +10,14 @@ export default function ItemCreateForm(props) {
 
 
   const handleChange = (event) => {
-    const attributeToChange = event.target.name
-    const newValue = event.target.value
+    const attributeToChange = event.target.name;
+    const newValue = event.target.value;
 
-    const item = {...newItem}
-    item[attributeToChange] = newValue
-    console.log(item)
-    setNewItem(item)
-  }
+    const item = { ...newItem };
+    item[attributeToChange] = newValue;
+    console.log(item);
+    setNewItem(item);
+  };
 
   const handleSelectFile = (e) => {
     file.length = 0
@@ -99,5 +99,5 @@ export default function ItemCreateForm(props) {
             </div>
         </form>
     </div>
-  )
+  );
 }
