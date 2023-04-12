@@ -23,6 +23,7 @@ import {
 } from "mdb-react-ui-kit";
 import { useTranslation } from "react-i18next";
 import "./i18n";
+import Home from "./components/Home";
 
 export default function App() {
   const [showNavColor, setShowNavColor] = useState(false);
@@ -104,7 +105,7 @@ export default function App() {
               </MDBNavbarToggler>
               <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
                 <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
-                  <MDBNavbarItem className="active">
+                  <MDBNavbarItem className="">
                     <MDBNavbarLink aria-current="page" href="/">
                       {t("Home")}
                     </MDBNavbarLink>
@@ -151,7 +152,7 @@ export default function App() {
           </MDBNavbar>
 
           <Routes>
-            <Route path="/"></Route>
+            <Route path="/" element={<Home></Home>}></Route>
             <Route path="/item" element={<ItemList></ItemList>}></Route>
             <Route
               path="/signup"

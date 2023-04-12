@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import "../App.css";
+import { useTranslation } from "react-i18next";
+import "../i18n";
 
 export default function ItemCreateForm(props) {
   const [newItem, setNewItem] = useState({});
+  const [t, i18n] = useTranslation();
 
   const handleChange = (event) => {
     const attributeToChange = event.target.name;
@@ -21,11 +24,11 @@ export default function ItemCreateForm(props) {
   };
 
   return (
-    <div>
-      <h1>Create Item</h1>
+    <div className="bigdiv">
+      <h1 className="h11">Create Item</h1>
       <Container className="form">
         <Form.Group>
-          <Form.Label>Name</Form.Label>
+          <Form.Label>{t("Name")}</Form.Label>
           <Form.Control name="title" onChange={handleChange} />
         </Form.Group>
 
@@ -43,17 +46,20 @@ export default function ItemCreateForm(props) {
       <div className="drop">
         <label>Item Category</label>
         <br></br>
-        <select class="selectpicker" onChange={handleChange}>
-          <option>GurGoan</option>
-          <option>Eid</option>
-          <option>New Born</option>
-          <option>Wedding</option>
-          <option>Others</option>
-        </select>
+        <div className="select">
+          <Form.Select className="" aria-label="Default select example">
+            <option value="GurGoan">GurGoan</option>
+            <option value="Eid">Eid</option>
+            <option value="NewBorn">New Born</option>
+            <option value="Wedding">Wedding</option>
+            <option value="Others">Others</option>
+          </Form.Select>
+        </div>
       </div>
-
-      <div className="drop">
-        <input type="submit" value="Add Item"></input>
+      <div className="drop2">
+        <Button className="btn123" variant="grey" type="submit">
+          Create
+        </Button>
       </div>
     </div>
   );

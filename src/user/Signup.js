@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
+import "../";
 
 export default function Signup(props) {
   const [newUser, setNewUser] = useState({});
@@ -15,28 +17,30 @@ export default function Signup(props) {
     props.register(newUser);
   };
 
+  const [t, i18n] = useTranslation();
+
   return (
     <div>
-      <h1 className="title">Sign Up</h1>
+      <h1 className="title">{t("Signup")}</h1>
 
       <Container className="form">
         <Form.Group>
-          <Form.Label>First Name</Form.Label>
+          <Form.Label>{t("Firstname")}</Form.Label>
           <Form.Control name="firstName" onChange={ChangeHandler} />
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Last Name</Form.Label>
+          <Form.Label>{t("Lastname")}</Form.Label>
           <Form.Control name="lastName" onChange={ChangeHandler} />
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>{t("Emailaddress")}</Form.Label>
           <Form.Control name="emailAddress" onChange={ChangeHandler} />
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Password</Form.Label>
+          <Form.Label>{t("Password")}</Form.Label>
           <Form.Control
             name="password"
             type="password"
@@ -45,7 +49,7 @@ export default function Signup(props) {
         </Form.Group>
 
         <Button variant="grey" onClick={registerHandler}>
-          Register
+          {t("Register")}
         </Button>
       </Container>
     </div>
