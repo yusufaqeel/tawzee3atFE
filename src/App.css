@@ -1,3 +1,64 @@
+.showcase {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  color: rgb(0, 0, 0);
+  font-size: 40px;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: -200px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-container video {
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: fill;
+  position: absolute;
+  /* top: 50%;
+  left: 50%; */
+  filter: opacity(50%);
+}
+
+.content {
+  z-index: 10;
+
+}
+
+.gallery {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+
+/* .carousel-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+} */
+
 .pageContainer {
   display: flex;
   flex-direction: column;
@@ -14,7 +75,7 @@
 .bg {
   /* Set rules to fill background */
   min-height: 100%;
-  min-width: 1024px;
+  min-width: 100%;
 
   /* Set up proportionate scaling */
   width: 100%;
@@ -22,11 +83,11 @@
 
   /* Set up positioning */
   position: relative;
-  top: 100;
+  top: 0;
   left: 0;
 }
 
-.background-video {
+/* .background-video {
   position: relative;
   right: 0;
   bottom: 0;
@@ -40,12 +101,12 @@
       width: auto;
       height: 50%;
   }
-}
+} */
 
 
-.drop {
+/* .drop {
   margin-left: ;
-}
+} */
 
 .select {
   width: 933px;
@@ -72,8 +133,11 @@
 
 .drop2 {
   margin-left: 40px;
+}
 
 .hidden {
   display: none;
 
 }
+
+
