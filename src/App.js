@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavbarComp from "./components/NavbarComp";
+// import NavbarComp from "./components/NavbarComp";
 import Footer from "./components/Footer";
 import "./App.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -22,14 +22,10 @@ import {
   MDBNavbarBrand,
   MDBCollapse,
 } from "mdb-react-ui-kit";
-import { MDBLink } from "mdbreact";
 
-import { MDBLink } from "mdbreact";
+// import { MDBLink } from "mdbreact";
 import { useTranslation } from "react-i18next";
 import "./i18n";
-
-import Home from "./components/Home";
-
 
 export default function App() {
   const [showNavColor, setShowNavColor] = useState(false);
@@ -99,7 +95,7 @@ export default function App() {
           <MDBNavbar expand="lg" dark bgColor="dark">
             <MDBContainer fluid>
               <MDBNavbarBrand href="/"><img src="images/logo.png" alt="Tawzee4at" height={"70px"} margin={"0px"}/></MDBNavbarBrand>
-              <MDBNavbarBrand href="/">{t("Title")}</MDBNavbarBrand>
+              {/* <MDBNavbarBrand href="/">{t("Title")}</MDBNavbarBrand> */}
               <MDBNavbarToggler
                 type="button"
                 data-target="#navbarColor02"
@@ -112,11 +108,11 @@ export default function App() {
               </MDBNavbarToggler>
               <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
                 <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
-                  <MDBNavbarItem className="">
+                  {/* <MDBNavbarItem className="">
                     <MDBNavbarLink aria-current="page" href="/">
                       {t("Home")}
                     </MDBNavbarLink>
-                  </MDBNavbarItem>
+                  </MDBNavbarItem> */}
                   <MDBNavbarItem>
                     <MDBNavbarLink href="/item">{t("Shop")}</MDBNavbarLink>
                   </MDBNavbarItem>

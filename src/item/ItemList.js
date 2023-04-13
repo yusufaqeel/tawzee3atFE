@@ -1,11 +1,10 @@
-
 import React, {useState, useEffect} from 'react'
 import Axios from 'axios'
 import Item from './Item'
 import AddButton from './AddButton'
 import ItemCreateFrom from './ItemCreateForm'
 import ItemEditForm from './ItemEditForm'
-import UploadImage from '../upload/UploadImage'
+// import UploadImage from '../upload/UploadImage'
 
 export default function ItemList() {
   const [items, setItems] = useState([]);
@@ -43,8 +42,8 @@ export default function ItemList() {
     .catch(err => {
       console.log("error adding item");
       console.log(err);
-    })
-  }
+    });
+  };
 
   const addImage = (file, id) => {
     const data = new FormData()
@@ -58,8 +57,8 @@ export default function ItemList() {
       console.log(res => {
         console.log("Item was added successfully");
         loadItemList()
-
       });
+    });
   };
 
   // const uploadImage = (item) => {
@@ -68,24 +67,24 @@ export default function ItemList() {
 
   //   })
   // }
-
-  const editView = (id) => {
-    Axios.get(`item/edit?id=${id}`, {
-      headers: {
-        Authorization: "Bearer" + localStorage.getItem("token"),
-      },
-    })
-      .then((res) => {
-        console.log(res.data.item);
-        let item = res.data.item;
-        console.log("loaded item info");
-        setIsEdit(true);
-        setCurrentItem(item);
+  
+  function editView(id) {
+      Axios.get(`item/edit?id=${id}`, {
+        headers: {
+          Authorization: "Bearer" + localStorage.getItem("token"),
+        },
       })
-      .catch((err) => {
-        console.log("Error Loading Infos");
-      });
-  };
+        .then((res) => {
+          console.log(res.data.item)
+          let item = res.data.item
+          console.log("loaded item info")
+          setIsEdit(true)
+          setCurrentItem(item)
+        })
+        .catch((err) => {
+          console.log("Error Loading Infos")
+        })
+  }
 
   const editItem = (item) => {
     Axios.put("item/update", item, {
@@ -126,7 +125,7 @@ export default function ItemList() {
     <div key={index}>
       <Item {...item} editView={editView} deleteItem={deleteItem}/>
     </div>
-  ))
+  ));
 
   return (
     <div>

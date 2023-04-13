@@ -3,13 +3,16 @@ import ReactPlayer from "react-player";
 
 const Bgvideo = () => {
     return (
-        <ReactPlayer         
-        className="background-video" 
+      <div className="video-container">
+                <ReactPlayer         
+        className="video" 
         playing={true}
         loop={true}
         muted={true}
-        plays-inline={true} 
+        // plays-inline={true} 
         url="videos/HomepageVideo.mp4"></ReactPlayer> 
+      </div>
+
     );
   };
   
