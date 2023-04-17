@@ -14,5 +14,9 @@
   "Name": "الاسم",
   "Firstname": "الاسم الاول",
   "Lastname": "اسم العائلة",
-  "Register": "التسجيل"
+  "Register": "التسجيل",
+  "PhoneNumber": "رقم الهاتف",
+  "Block": "المجمع",
+  "Street": "رقم الشارع",
+  "House": "رقم المنزل"
 }

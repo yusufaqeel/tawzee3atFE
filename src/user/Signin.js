@@ -20,7 +20,7 @@ export default function Signin(props) {
   const [t, i18n] = useTranslation();
 
   return (
-    <div>
+    <div className="bottomMargin">
       <h1 className="title">{t("Signin")}</h1>
 
       <Container className="form">

@@ -48,6 +48,26 @@ export default function Signup(props) {
           />
         </Form.Group>
 
+        <Form.Group>
+          <Form.Label>{t("PhoneNumber")}</Form.Label>
+          <Form.Control name="phoneNumber" onChange={ChangeHandler} />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>{t("Block")}</Form.Label>
+          <Form.Control name="block" onChange={ChangeHandler} />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>{t("Street")}</Form.Label>
+          <Form.Control name="street" onChange={ChangeHandler} />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>{t("House")}</Form.Label>
+          <Form.Control name="house" onChange={ChangeHandler} />
+        </Form.Group>
+
 
         <Button variant="grey" onClick={registerHandler}>
           {t("Register")}

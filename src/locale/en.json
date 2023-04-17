@@ -13,5 +13,9 @@
   "sub": "SUBSCRIBE",
   "Firstname": "First Name",
   "Lastname": "Last Name",
-  "Register": "Register"
+  "Register": "Register",
+  "PhoneNumber": "Phone Number",
+  "Block": "Block",
+  "Street": "Street",
+  "House": "House"
 }

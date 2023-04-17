@@ -55,42 +55,43 @@ export default function ItemCreateForm(props) {
 
   return (
 
-    <div className={props.button === 1 ? "hidden" : ""}>
+    <div className= {props.button === 1 ? "hidden" : ""}>
+      <div className="createItem-card">
         <h1>Create Item</h1>
         <form onSubmit={handleSubmit}>
 
-        <label htmlFor="file">
+        <label className="createItemLabel" htmlFor="file">
           {" "}
-          Item Image: &nbsp; 
+          Item Image 
         </label>
 
         {fileSelected}
 
-        <input
+        <input className="createItemInput"
           id="file"
           type="file"
           onChange={handleSelectFile}
           multiple={true}
-        />
+        ></input>
 
             <div>
-                <label>Name: &nbsp;</label>
-                <input type="text" name="title" onChange={handleChange}></input>
+                <label className="createItemLabel">Name </label>
+                <input className="createItemInput" type="text" name="title" onChange={handleChange}></input>
             </div>
 
             <div>
-                <label>Description: &nbsp;</label>
-                <input type="text" name="des" onChange={handleChange}></input>
+                <label className="createItemLabel">Description</label>
+                <input className="createItemInput" type="text" name="des" onChange={handleChange}></input>
             </div>
 
             <div>
-                <label>Price: &nbsp;</label>
-                <input type="text" name="price" onChange={handleChange}></input>
+                <label className="createItemLabel">Price</label>
+                <input className="createItemInput" type="text" name="price" onChange={handleChange}></input>
             </div>
 
             <div>
-                <label>Item Category: &nbsp;</label>
-                <select name="category" onChange={handleChange}>
+                <label className="createItemLabel">Item Category</label>
+                <select className="createItemInput" name="category" onChange={handleChange}>
                     <option>-------</option>
                     <option>GurGoan</option>
                     <option>Eid</option>
@@ -101,10 +102,10 @@ export default function ItemCreateForm(props) {
             </div>
 
             <div>
-                <input type="submit" value="Add Item"></input>
+                <input onClick={() => props.handleSelect(1)} className="item-btncreate" type="submit" value="Add Item"></input>
             </div>
         </form>
-
+        </div>
     </div>
   );
 }

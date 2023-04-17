@@ -1,5 +1,5 @@
 
-import React, {useState, useEffect} from 'react'
+import React, {Component, useState, useEffect} from 'react'
 import Axios from 'axios'
 import Item from './Item'
 import AddButton from './AddButton'
@@ -123,21 +123,33 @@ export default function ItemList() {
       });
   };
 
+  const [button, setButton] = useState(1);
+    
+  
+    const handleSelect = (incomingButton) => {
+      setButton(incomingButton);
+      console.log(incomingButton);
+    };
+
   const allItems = items.map((item, index) => (
 
     <div key={index}>
-      <Item {...item} editView={editView} deleteItem={deleteItem}/>
+      <Item {...item} editView={editView} deleteItem={deleteItem} button={button} handleSelect={handleSelect}/>
     </div>
   ))
 
+    
+
+  
+
   return (
-    <div>
-      <AddButton/>
+    <div className='cardContainer'>
+      <AddButton button={button} handleSelect={handleSelect}/>
       
       {(!isEdit) ?
-      <ItemCreateFrom addItem={addItem} addImage={addImage}/>
+      <ItemCreateFrom button={button} handleSelect={handleSelect} addItem={addItem} addImage={addImage}/>
       :
-      <ItemEditForm key={currentItem._id} item={currentItem} editItem={editItem}/>
+      <ItemEditForm button={button} handleSelect={handleSelect} key={currentItem._id} item={currentItem} editItem={editItem}/>
       }
       <div>
         {allItems}

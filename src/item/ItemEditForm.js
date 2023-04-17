@@ -21,28 +21,30 @@ export default function ItemEditForm(props) {
   }
 
   return (
-    <div>
+    <div className= {props.button === 1 ? "hidden" : ""}>
+        <div className="createItem-card">
         <h1>Edit Item</h1>
 
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Name</label>
-                <input type="text" name="title" onChange={handleChange} value={item.title}></input>
+                <label className="createItemLabel">Name</label>
+                <br></br>
+                <input className="createItemInput" type="text" name="title" onChange={handleChange} value={item.title}></input>
             </div>
 
             <div>
-                <label>Description</label>
-                <input type="text" name="des" value={item.des} onChange={handleChange}></input>
+                <label className="createItemLabel">Description</label>
+                <input className="createItemInput" type="text" name="des" value={item.des} onChange={handleChange}></input>
             </div>
 
             <div>
-                <label>Price</label>
-                <input type="number" name="price" value={item.price} onChange={handleChange}></input>
+                <label className="createItemLabel">Price</label>
+                <input className="createItemInput" type="number" name="price" value={item.price} onChange={handleChange}></input>
             </div>
 
             <div>
-                <label>Item Category</label>
-                <select name="category" value={item.category}>
+                <label className="createItemLabel">Item Category</label>
+                <select className="createItemInput" name="category" value={item.category}>
                     <option>-----</option>
                     <option>GurGoan</option>
                     <option>Eid</option>
@@ -53,9 +55,10 @@ export default function ItemEditForm(props) {
             </div>
 
             <div>
-                <input type="submit" value="Update Item"></input>
+                <input onClick={() => props.handleSelect(1)} className="item-btncreate" type="submit" value="Update Item"></input>
             </div>
         </form>
+        </div>
     </div>
   )
 }

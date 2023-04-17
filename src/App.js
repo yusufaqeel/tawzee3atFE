@@ -27,7 +27,7 @@ import {
 import { MDBLink } from "mdbreact";
 import { useTranslation } from "react-i18next";
 import "./i18n";
-import Home from "./components/Home";
+// import Home from "./components/Home";
 
 
 export default function App() {
@@ -159,7 +159,9 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<Home></Home>}></Route>
-            <Route path="/item" element={<ItemList></ItemList>}></Route>
+            <Route path="/item" 
+            element={
+              isAuth ? <ItemList /> : <Signin login={loginHandler}></Signin>}></Route>
             <Route
               path="/signup"
               element={<Signup register={registerHandler} />}

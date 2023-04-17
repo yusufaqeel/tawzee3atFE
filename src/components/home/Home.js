@@ -1,6 +1,6 @@
 import React from 'react'
 import Bgvideo from './bgvideo'
-// import HomeCarousel from './Gallery'
+import HomeGallery from './Gallery'
 
 export default function Home() {
   return (
@@ -8,7 +8,13 @@ export default function Home() {
       <div className='bgvideo'>
         <Bgvideo />
       </div>
+      <section className='gallery'>
+        <div className='carousel-container'>
+          <HomeGallery />
+        </div>
+      </section>
     </div>
+    
     
   )
 }
